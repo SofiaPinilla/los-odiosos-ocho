@@ -10,6 +10,15 @@ const TaskController = {
             console.error(error)
             res.status(500).send({msg:"Error al crear la tarea", error})
         }
+    },
+    async getAll(req, res) {
+        try {
+            const tasks = await Task.find()
+            res.status(200).send({msg: "Aqui tienes todas las tareas", tasks})
+        } catch (error) {
+            console.error(error)
+            res.status(500).send({msg: "Error al traer todas las tareas", error})
+        }
     }
 
 }
