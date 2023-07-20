@@ -29,6 +29,16 @@ const TaskController = {
       res.status(500).send({ msg: 'Error al traer la tarea', error });
     }
   },
+  async markAsCompleted(req,res){  
+     try {
+      
+      const task = await Task.findByIdAndUpdate(req.params._id, { completed: true}, {new:true} ); 
+      res.status(200).send({ msg: 'Tarea marcada con exito', task });    
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ msg: 'Error al marcar la tarea', error });      
+    }
+  }
 };
 
 module.exports = TaskController;
