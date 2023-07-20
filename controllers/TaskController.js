@@ -38,7 +38,18 @@ const TaskController = {
       console.error(error);
       res.status(500).send({ msg: 'Error al marcar la tarea', error });      
     }
-  }
+  },
+
+  async updateTitle (req,res) {
+    try {
+        const task = await Task.findByIdAndUpdate(req.params._id, {title: req.body.title}, {new:true});
+        
+        res.status(200).send({ msg: 'Título actualizado con exito', task }); 
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ msg: 'Error al marcar la tarea', error });      
+    }
+  },
 };
 
 module.exports = TaskController;

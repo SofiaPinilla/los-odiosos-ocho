@@ -6,5 +6,6 @@ router.post('/', TaskController.create);
 router.get('/get', TaskController.getAll);
 router.get('/getTaskById/:_id', TaskController.getTaskById);
 router.put('/markAsCompleted/:_id', TaskController.markAsCompleted)
+router.put('/titleUpdate/:_id', TaskController.updateTitle);
 
 module.exports = router;
